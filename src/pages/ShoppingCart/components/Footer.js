@@ -1,11 +1,11 @@
 import React from "react";
 import "./Footer.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { resetState } from "../../../store/shoppingCart/shoppingCartSlice";
 
 export const Footer = () => {
-  const dispatch = useDispatch();
-  const products = useSelector((state) => state.shoppingCart.products);
+  /**
+   * products będzie tablicą produktów które pochodza ze stora = to co user wybrał
+   */
+  const products = [];
 
   const handleClick = () => {
     fetch("https://dummyjson.com/http/200", {
@@ -13,11 +13,17 @@ export const Footer = () => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({ products: products.map(({ id }) => id) }),
+      /**
+       * zmień to co wysyłamy na tablice id wybranych produktów
+       */
+      body: JSON.stringify({ products: "trelemorele" }),
     })
       .then((res) => res.json())
       .then(() => {
-        dispatch(resetState());
+        /**
+         * zresetuj stan reduxowy do stanu początkowego tak żeby
+         * można było na nowo coś kupować :)
+         */
       });
   };
 

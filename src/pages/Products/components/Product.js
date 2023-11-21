@@ -1,16 +1,18 @@
 import React from "react";
 import "./Product.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { addProduct } from "../../../store/shoppingCart/shoppingCartSlice";
 
 export const Product = ({ product }) => {
-  const dispatch = useDispatch();
-  const productsInCart = useSelector((state) => state.shoppingCart.products);
-
-  const isAddedToCart = productsInCart.find(({ id }) => product.id === id);
+  /**
+   * sprawdź czy w storze istnieje już element który też jest dostepny w propsach
+   * jeżeli tak przypisz do zmiennej wartość true dzięki temu przycisk zostanie zablokowany
+   * przez co user nie będzie mógł dodać tego samego do koszyka
+   */
+  const isAddedToCart = false;
 
   const handleAddProductClick = () => {
-    dispatch(addProduct(product));
+    /**
+     * dodaj produkt do stora
+     */
   };
 
   return (

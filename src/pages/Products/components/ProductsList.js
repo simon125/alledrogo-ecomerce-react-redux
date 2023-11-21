@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-
-import { Product } from "./Product";
-
 import "./ProductsList.scss";
 
 export const ProductsList = () => {
@@ -10,14 +7,21 @@ export const ProductsList = () => {
   useEffect(() => {
     fetch("https://dummyjson.com/products")
       .then((res) => res.json())
-      .then((data) => setProducts(data.products));
+      .then((data) => {
+        /*
+        zwerfyikuj co jest w konsoli - co się pobiera - następnie przypisz dane (tablice produktów)
+        do stanu products
+        */
+        console.log(data);
+      });
   }, []);
 
   return (
     <article className="products-list-container">
-      {products.map((product) => (
-        <Product key={product.id} product={product} />
-      ))}
+      {/* 
+        POBRANĄ LISTĘ PRODUKTÓW WYŚWIETL ZA POMOCĄ FUNCKJE .MAP DOSTĘPNEJ NA TABLICACH
+        UŻYJ KOMPONENTU Product.js do wysweitlania produktów 
+    */}
     </article>
   );
 };

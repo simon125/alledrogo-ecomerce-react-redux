@@ -1,7 +1,18 @@
 import React from "react";
 import "./Product.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { addProduct } from "../../../store/shoppingCart/shoppingCartSlice";
 
 export const Product = ({ product }) => {
+  const dispatch = useDispatch();
+  const productsInCart = useSelector((state) => state.shoppingCart.products);
+
+  const isAddedToCart = productsInCart.find(({ id }) => product.id === id);
+
+  const handleAddProductClick = () => {
+    dispatch(addProduct(product));
+  };
+
   return (
     <div className="product-container">
       <p>
@@ -13,7 +24,9 @@ export const Product = ({ product }) => {
       <div className="thumbnail-container">
         <img className="thumbnail" src={product.thumbnail} alt="" />
       </div>
-      <button>Dodaj do koszyka</button>
+      <button disabled={isAddedToCart} onClick={handleAddProductClick}>
+        Dodaj do koszyka
+      </button>
     </div>
   );
 };

@@ -1,27 +1,23 @@
 import React from "react";
 
 import "./SelectedProducts.scss";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  removeProduct,
-  updateProductAmount,
-} from "../../../store/shoppingCart/shoppingCartSlice";
 
 export const SelectedProducts = () => {
-  const dispatch = useDispatch();
-  const products = useSelector((state) => state.shoppingCart.products);
+  const products = [];
 
-  const total = products.reduce(
-    (totalAcc, product) => totalAcc + product.price * product.amount,
-    0
-  );
+  /**
+   * policz cene wszystkich produktów w koszyku
+   * uwzględnij też wybraną ilość produktów
+   */
+
+  const total = 100;
 
   const handleCouterChange = (id, amount) => {
-    dispatch(updateProductAmount({ id, amount }));
+    console.log(id, amount);
   };
 
   const handleDeleteClick = (id) => {
-    dispatch(removeProduct(id));
+    console.log(id);
   };
 
   return (

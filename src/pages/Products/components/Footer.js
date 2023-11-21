@@ -2,19 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import "./Footer.scss";
-import { useSelector } from "react-redux";
 
 export const Footer = () => {
-  const productsInCart = useSelector((state) => state.shoppingCart.products);
+  /**
+   * Sprawdz jaka jest cena wszystkich produktów w koszyku i przypisz ją do zmiennej total
+   * zmienna total jest wyświetlana userowi
+   */
 
-  if (productsInCart.length === 0) {
-    return null;
-  }
-
-  const total = productsInCart.reduce(
-    (totalAcc, product) => totalAcc + product.price,
-    0
-  );
+  const total = 100;
 
   return (
     <article className="footer">
